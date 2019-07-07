@@ -13,10 +13,10 @@ The project also requires
 - GTK+2.x or higher, including headers (libgtk2.0-dev)
 
 The packages can be installed using a terminal and the following commands:
-
-[compiler] sudo apt-get install build-essential
-[required] sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
-
+```
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+```
 ### Next we would need to install the Opencv library
 ```
 git clone https://github.com/opencv/opencv.git
@@ -49,4 +49,3 @@ cmake ..
 make
 ./traffic_simulation
 ```
-TODO::Update README.m
