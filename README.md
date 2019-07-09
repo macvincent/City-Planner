@@ -12,7 +12,7 @@ The project also requires
 - Git
 - GTK+2.x or higher, including headers (libgtk2.0-dev)
 
-The packages can be installed using a terminal and the following commands:
+The packages can be installed from the terminal using the following commands:
 ```
 sudo apt-get install build-essential
 sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
@@ -42,7 +42,7 @@ to build the Opencv library
 sudo make install
 ```
 ### Next we would need to install the Opencv library
-To compile and run our project we would go back to the 'City_planner` repo creat another build directory and run cmake and then run our simulation
+To compile and run our project we would go back to the 'City_planner` repo creat another build directory, run cmake and then run our simulation
 
 ```
 cmake ..

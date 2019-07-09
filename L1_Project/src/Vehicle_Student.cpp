@@ -72,6 +72,8 @@ void Vehicle::drive()
             yv = y1 + completion * dy;
             this->setPosition(xv, yv);
 
+            std::future<bool> ftr = std::async(Intersection::addVehicleToQueue, _currDestination, get_shared_this());
+            ftr.wait();
             // check wether halting position in front of destination has been reached
             if (completion >= 0.9 && !hasEnteredIntersection)
             {
