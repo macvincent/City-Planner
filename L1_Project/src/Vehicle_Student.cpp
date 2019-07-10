@@ -24,9 +24,8 @@ void Vehicle::setCurrentDestination(std::shared_ptr<Intersection> destination)
 
 void Vehicle::simulate()
 {
-    // Task L1.2 : Start a thread with the member function „drive“ and the object „this“ as the launch parameters. 
-    // Also, add the created thread into the _thread vector of the parent class. 
-    threads.push_back(std::thread(&Vehicle::drive, this));
+    // launch drive function in a thread
+    threads.emplace_back(std::thread(&Vehicle::drive, this));
 }
 
 // virtual function which is executed in a thread
@@ -72,11 +71,12 @@ void Vehicle::drive()
             yv = y1 + completion * dy;
             this->setPosition(xv, yv);
 
-            std::future<bool> ftr = std::async(Intersection::addVehicleToQueue, _currDestination, get_shared_this());
-            ftr.wait();
             // check wether halting position in front of destination has been reached
             if (completion >= 0.9 && !hasEnteredIntersection)
             {
+                // Add vehicle to wait queue
+                std::future<void> ftr = std::async(Intersection::addVehicleToQueue, _currDestination, get_shared_this());
+                ftr.wait();
                 // slow down and set intersection flag
                 _speed /= 10.0;
                 hasEnteredIntersection = true;
@@ -104,6 +104,9 @@ void Vehicle::drive()
                 
                 // pick the one intersection at which the vehicle is currently not
                 std::shared_ptr<Intersection> nextIntersection = nextStreet->getInIntersection()->getID() == _currDestination->getID() ? nextStreet->getOutIntersection() : nextStreet->getInIntersection(); 
+
+                // send signal to intersection that vehicle has left the intersection
+                _currDestination->vehicleHasLeft(get_shared_this());
 
                 // assign new street and destination
                 this->setCurrentDestination(nextIntersection);

@@ -3,14 +3,12 @@
 City Planner is a C++ application that simulates the movements of vehicles in a through real cities.
 
 ## Installation
-
-### To test you can clone the repo [City planner](https://github.com/macvincent/city-planner)
-
-The project also requires
+The project requires
 - GCC 4.4.x or later
 - CMake 2.8.7 or higher
 - Git
 - GTK+2.x or higher, including headers (libgtk2.0-dev)
+- Opencv
 
 The packages can be installed from the terminal using the following commands:
 ```
