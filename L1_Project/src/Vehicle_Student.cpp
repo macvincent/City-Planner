@@ -75,7 +75,7 @@ void Vehicle::drive()
             if (completion >= 0.9 && !hasEnteredIntersection)
             {
                 // Add vehicle to wait queue
-                std::future<void> ftr = std::async(Intersection::addVehicleToQueue, _currDestination, get_shared_this());
+                std::future<void> ftr = std::async(&Intersection::addVehicleToQueue, _currDestination, get_shared_this());
                 ftr.wait();
                 // slow down and set intersection flag
                 _speed /= 10.0;
