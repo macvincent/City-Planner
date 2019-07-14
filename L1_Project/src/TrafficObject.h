@@ -28,14 +28,13 @@ public:
 
     // typical behaviour methods
     virtual void simulate(){};
+    static std::mutex _mtxCout;
 
 protected:
     ObjectType _type;                 // identifies the class type
     int _id;                          // every traffic object has its own unique id
     double _posX, _posY;              // vehicle position in pixels
     std::vector<std::thread> threads; // holds all threads that have been launched within this object
-    static std::mutex _mtxCout;
-
 private:
     static int _idCnt; // global variable for counting object ids
 };
