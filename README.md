@@ -1,7 +1,6 @@
 # City Planner
 
-City Planner is a C++ application that simulates the movements of vehicles in a through real cities.
-
+City Planner is a C++ application that multi-threaded traffic simulation showing vehicular movement in a real-world city.
 ## Installation
 The project requires
 - GCC 4.4.x or later
@@ -39,10 +38,13 @@ to build the Opencv library
 ```
 sudo make install
 ```
-### Next we would need to install the Opencv library
-To compile and run our project we would go back to the 'City_planner` repo creat another build directory, run cmake and then run our simulation
+### To run compile and run City_Planner
+We would go back to the 'City_planner` repo, create a build directory, run cmake from the build directory to build our make file, run make to build our object files, and then the run our traffic simulation
 
 ```
+cd ~/City-Planner
+cd L1_Projects
+mkdir build && build
 cmake ..
 make
 ./traffic_simulation
