@@ -37,3 +37,55 @@ When the project is built initially, all traffic lights will be green. When you 
 - **Task FP.4** : Implement the method `Send`, which should use the mechanisms `std::lock_guard<std::mutex>` as well as `_condition.notify_one()` to add a new message to the queue and afterwards send a notification. Also, in class `TrafficLight`, create a private member of type `MessageQueue` for messages of type `TrafficLightPhase` and use it within the infinite loop to push each new `TrafficLightPhase` into it by calling send in conjunction with move semantics.
 - **Task FP.5** : The method receive should use `std::unique_lock<std::mutex>` and `_condition.wait()` to wait for and receive new messages and pull them from the queue using move semantics. The received object should then be returned by the receive function. Then, add the implementation of the method `waitForGreen`, in which an infinite while-loop runs and repeatedly calls the `receive` function on the message queue. Once it receives `TrafficLightPhase::green`, the method returns.
 - **Task FP.6** : In class Intersection, add a private member `_trafficLight` of type `TrafficLight`. In method `Intersection::simulate()`, start the simulation of `_trafficLight`. Then, in method `Intersection::addVehicleToQueue`, use the methods `TrafficLight::getCurrentPhase` and `TrafficLight::waitForGreen` to block the execution until the traffic light turns green.
+=======
+# City Planner
+
+City Planner is a C++ application that multi-threaded traffic simulation showing vehicular movement in a real-world city.
+## Installation
+The project requires
+- GCC 4.4.x or later
+- CMake 2.8.7 or higher
+- Git
+- GTK+2.x or higher, including headers (libgtk2.0-dev)
+- Opencv
+
+The packages can be installed from the terminal using the following commands:
+```
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+```
+### Next we would need to install the Opencv library
+```
+git clone https://github.com/opencv/opencv.git
+
+git clone https://github.com/opencv/opencv_contrib.git
+```
+Afer cloning
+1. Create a build directory 
+```
+cd ~/opencv
+
+mkdir build && cd build
+```
+2. From the build directory run
+```
+cmake ..
+
+make -j7
+```
+to build the Opencv library
+3. To install libraries, execute the following command from build directory
+```
+sudo make install
+```
+### To run compile and run City_Planner
+We would go back to the 'City_planner` repo, create a build directory, run cmake from the build directory to build our make file, run make to build our object files, and then the run our traffic simulation
+
+```
+cd ~/City-Planner
+cd L1_Projects
+mkdir build && build
+cmake ..
+make
+./traffic_simulation
+``
