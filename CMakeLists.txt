@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.11.3)
+cmake_minimum_required(VERSION 3.15.0)
 
 # set(CMAKE_CXX_STANDARD 17)
-project(OSM_A_star_search)
+project(City-Planner)
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++17 -pthread")
 
-find_package(OpenCV 4.1 REQUIRED)
+find_package(OpenCV 4.1.1 REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 link_directories(${OpenCV_LIBRARY_DIRS})
