@@ -38,7 +38,7 @@ void Vehicle::drive()
 
     // initalize variables
     bool hasEnteredIntersection = false;
-    double cycleDuration = 1; // duration of a single simulation cycle in ms
+    double cycleDuration = 3; // duration of a single simulation cycle in ms
     std::chrono::time_point<std::chrono::system_clock> lastUpdate;
 
     // init stop watch

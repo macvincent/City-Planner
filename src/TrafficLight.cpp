@@ -38,7 +38,7 @@ void TrafficLight::cycleThroughPhases()
 {
     std::random_device rd; // obtain a random number from hardware
     std::mt19937 eng(rd()); // seed the generator
-    std::uniform_int_distribution<> distr(4, 6); // define the range
+    std::uniform_int_distribution<> distr(4, 10); // define the range
     int sleepTime = 0;
     while(true){
         sleepTime = distr(eng);
