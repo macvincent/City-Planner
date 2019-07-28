@@ -19,8 +19,6 @@ public:
     std::shared_ptr<Intersection> getOutIntersection() { return _interOut; }
     std::shared_ptr<Intersection> getInIntersection() { return _interIn; }
 
-    // typical behaviour methods
-
     // miscellaneous
     std::shared_ptr<Street> get_shared_this() { return shared_from_this(); }
 
