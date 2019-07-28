@@ -26,13 +26,15 @@ class TrafficLight: public TrafficObject, public std::enable_shared_from_this<Tr
 {
 public:
     TrafficLight()
-    {
+    {   
+        _toggleCycle = false;
         _currentPhase = TrafficLightPhase::red;
     }
     void waitForGreen();
     void simulate();
     TrafficLightPhase getCurrentPhase(){return _currentPhase;};
 private:
+    bool _toggleCycle;
     TrafficLightPhase _currentPhase;
     void cycleThroughPhases();
     std::condition_variable _condition;

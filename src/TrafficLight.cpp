@@ -38,14 +38,20 @@ void TrafficLight::cycleThroughPhases()
 {
     std::random_device rd; // obtain a random number from hardware
     std::mt19937 eng(rd()); // seed the generator
-    std::uniform_int_distribution<> distr(4, 10); // define the range
+    std::uniform_int_distribution<> distr(4, 6); // define the range
     int sleepTime = 0;
     while(true){
         sleepTime = distr(eng);
         std::this_thread::sleep_for(std::chrono::milliseconds(sleepTime*1000));
-        if(_currentPhase == TrafficLightPhase::green)_currentPhase = TrafficLightPhase::red;
-        else _currentPhase = TrafficLightPhase::green;
+        //Toggle state after two cycles
+        if(_toggleCycle){
+            if(_currentPhase == TrafficLightPhase::green)_currentPhase = TrafficLightPhase::red;
+            else _currentPhase = TrafficLightPhase::green;
+            _toggleCycle = false;
+        }else{
+            _toggleCycle  = true;
+        }
         messageQueue.send(std::move(_currentPhase));
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 }
